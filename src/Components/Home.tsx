@@ -18,7 +18,7 @@ class Home extends React.Component<HomeProps, HomeState> {
     }
     render() { 
         if (this.props.user_is_logged) {
-            if (this.props.user_role == "client") {
+            if (this.props.user_role === "client") {
                 return (<Redirect to="/doctors"></Redirect>);
             }
             else {
@@ -31,7 +31,7 @@ class Home extends React.Component<HomeProps, HomeState> {
     }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: any) => {
     return {
         user_is_logged: state.user_is_logged,
         user_role: state.user_role

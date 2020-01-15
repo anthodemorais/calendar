@@ -5,7 +5,7 @@ const initState = {
     user_role: 'visitor'
 }
 
-const reducer = (state = initState, action) => {
+const reducer = (state = initState, action: any) => {
 
     if (action.type === 'CONNECT_USER') {
         return {

@@ -15,7 +15,7 @@ class RouteDoctor extends React.Component<RouteDoctorProps, RouteDoctorState> {
         this.state = {};
     }
     render() { 
-        if (this.props.user_is_logged === true && this.props.user_role == "doctor") {
+        if (this.props.user_is_logged === true && this.props.user_role === "doctor") {
             return (
                 this.props.children
             )
@@ -25,7 +25,7 @@ class RouteDoctor extends React.Component<RouteDoctorProps, RouteDoctorState> {
     }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: any) => {
     return {
         user_is_logged: state.user_is_logged,
         user_role: state.user_role

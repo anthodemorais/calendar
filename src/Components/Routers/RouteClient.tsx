@@ -15,7 +15,7 @@ class RouteClient extends React.Component<RouteClientProps, RouteClientState> {
         this.state = {};
     }
     render() { 
-        if (this.props.user_is_logged === true && this.props.user_role == "client") {
+        if (this.props.user_is_logged === true && this.props.user_role === "client") {
             return (
                 this.props.children
             )
@@ -25,7 +25,7 @@ class RouteClient extends React.Component<RouteClientProps, RouteClientState> {
     }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state: any) => {
     return {
         user_is_logged: state.user_is_logged,
         user_role: state.user_role
