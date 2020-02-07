@@ -48,7 +48,7 @@ export default function () {
                         </RouteClient>
                     </Route>
 
-                    <Route exact path="/bookings/">
+                    <Route exact path="/bookings">
                         <RouteClient>
                             <Bookings></Bookings>
                         </RouteClient>

@@ -1,33 +1,50 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { getReservations, deleteReservation } from '../../Services/API';
+import swal from 'sweetalert';
 
 class Bookings extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            booking: {
-                doctor: "Anthony",
-                dates: ["15/01/2020 17:00", "17/01/2020 10:00",]
-            }
+            bookings: []
         };
     }
 
-    handleCancel(date) {
+    componentDidMount() {
+        getReservations(this.props.token)
+        .then(data => {
+            data["hydra:member"].filter(booking => booking.client["@id"].slice(-1) === this.props.user.id.toString())
+            this.setState({ bookings: data["hydra:member"] })
+        })
+    }
 
+    handleCancel(id) {
+        deleteReservation(this.props.token, id)
+        .then(data => swal({ title: "Canceled reservation", icon: "success" }))
+        // .catch(error => swal({ title: "Could not cancel reservation", icon: "error" }))
     }
 
     render() { 
         return (
             <div>
-                <p>Doctor : {this.state.booking.doctor}</p>
-                {this.state.booking.dates.map((date) => (
-                    <div>
-                        <span>{date}</span><br/>
-                        <button onClick={e => this.handleCancel(date)}>Cancel</button>
+                {this.state.bookings.map(booking => {
+                    return <div>
+                        <p>Doctor : {booking.doctor.fullname}</p>
+                        <button onClick={e => this.handleCancel(booking.id)}>Cancel</button>
                     </div>
-                ))}
+                })}
+                {this.state.bookings.length === 0 && <p>No reservation</p>}
             </div>
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        token: state.token,
+        user: state.user,
+    }
+}
  
-export default Bookings;
+export default connect(mapStateToProps)(Bookings);

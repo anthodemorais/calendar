@@ -5,7 +5,6 @@ const initState = {
     user_role: 'visitor',
     token: "",
     user: {},
-    doctors: []
 }
 
 const reducer = (state = initState, action) => {
@@ -16,7 +15,6 @@ const reducer = (state = initState, action) => {
             user_is_logged: true,
             user_role: action.role,
             token: action.token,
-            doctors: action.doctors,
             user: action.user
         }
     }

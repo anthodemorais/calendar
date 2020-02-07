@@ -8,7 +8,6 @@ class Home extends React.Component {
         this.state = {};
     }
     render() { 
-        console.log(this.props)
         if (this.props.user_is_logged) {
             if (this.props.user_role === "client") {
                 return (<Redirect to="/doctors"></Redirect>);
