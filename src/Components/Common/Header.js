@@ -1,15 +1,7 @@
 import * as React from 'react';
 
-export interface HeaderProps {
-    
-}
- 
-export interface HeaderState {
-    
-}
- 
-class Header extends React.Component<HeaderProps, HeaderState> {
-    constructor(props: HeaderProps) {
+class Header extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {};
     }

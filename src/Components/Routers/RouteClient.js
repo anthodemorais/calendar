@@ -2,20 +2,13 @@ import * as React from 'react';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-export interface RouteDoctorProps {
-    user_is_logged: boolean
-    user_role: string
-}
- 
-export interface RouteDoctorState {}
- 
-class RouteDoctor extends React.Component<RouteDoctorProps, RouteDoctorState> {
-    constructor(props: RouteDoctorProps) {
+class RouteClient extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {};
     }
     render() { 
-        if (this.props.user_is_logged === true && this.props.user_role === "doctor") {
+        if (this.props.user_is_logged === true && this.props.user_role === "client") {
             return (
                 this.props.children
             )
@@ -25,11 +18,12 @@ class RouteDoctor extends React.Component<RouteDoctorProps, RouteDoctorState> {
     }
 }
 
-let mapStateToProps = (state: any) => {
+let mapStateToProps = (state) => {
     return {
         user_is_logged: state.user_is_logged,
         user_role: state.user_role
     }
 }
 
-export default connect(mapStateToProps)(RouteDoctor);
+ 
+export default connect(mapStateToProps)(RouteClient);

@@ -36,25 +36,25 @@ export default function () {
                         <Register></Register>
                     </Route>
 
-                    <Route path="/doctors">
+                    <Route exact path="/doctors">
                         <RouteClient>
                             <DoctorsList></DoctorsList>
                         </RouteClient>
                     </Route>
 
-                    <Route path="/doctors/book/:id">
+                    <Route exact path="/doctors/book/:id">
                         <RouteClient>
                             <Doctor></Doctor>
                         </RouteClient>
                     </Route>
 
-                    <Route path="/client/bookings/">
+                    <Route exact path="/bookings/">
                         <RouteClient>
                             <Bookings></Bookings>
                         </RouteClient>
                     </Route>
 
-                    <Route path="/availabilities">
+                    <Route exact path="/availabilities">
                         <RouteDoctor>
                             <AvailabilitiesList></AvailabilitiesList>
                         </RouteDoctor>
